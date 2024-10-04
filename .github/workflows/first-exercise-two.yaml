@@ -1,0 +1,11 @@
+name: Exercise 1A
+on: [issues]
+env:
+  WORKING_DIRECTORY: "first-exercise"
+
+jobs:
+    output-info:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output event details
+              run: echo "${{ toJson(github.event) }}"
