@@ -10,7 +10,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+
       - name: Install Dependencies
         run: npm install
+        working-directory: second-action-react-repo
+
       - name: Run tests
         run: npm test
+        working-directory: second-action-react-repo
