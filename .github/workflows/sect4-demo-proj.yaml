@@ -1,8 +1,20 @@
 name: Section 4 Demo 1
 on:
     pull_request:
-        types: [opened]
+        types:
+            - opened
+        branches:
+            - main       # main branch
+            - 'dev-*'    # dev-new or dev-this-is-a-good-branch
+            - 'feat/**'  # feat/new or feat/new/button
     workflow_dispatch:
+    push:
+        branches:
+            - main
+            - 'dev-*'
+            - 'feat/**'
+        paths-ignore:
+            - '.github/workflows/*'
 env:
     WORKING_DIRECTORY: "sect4-demo1"
 
