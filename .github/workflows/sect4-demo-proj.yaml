@@ -1,0 +1,33 @@
+name: Section 4 Demo 1
+on:
+    pull_request:
+        types: [opened]
+    workflow_dispatch:
+env:
+    WORKING_DIRECTORY: "sect4-demo1"
+
+jobs:
+    ldeploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Output event data
+              run: echo "${{ toJson(github.event) }}"
+
+            - name: Get code
+              uses: actions/checkout@v3
+
+            - name: Install dependencies
+              run: npm ci
+              working-directory: ${{ env.WORKING_DIRECTORY }}
+
+            - name: Test code
+              run: npm run test
+              working-directory: ${{ env.WORKING_DIRECTORY }}
+
+            - name: Build code
+              run: npm run build
+              working-directory: ${{ env.WORKING_DIRECTORY }}
+
+            - name: Deploy project
+              run: echo "Deploying..."
+              working-directory: ${{ env.WORKING_DIRECTORY }}
